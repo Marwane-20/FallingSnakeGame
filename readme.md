@@ -1,6 +1,6 @@
 
 # FallingSnakes
-## Java game project
+#### Java game project
 
 Marwane RACHAD
 ghitwacha@gmail.com
