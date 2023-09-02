@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
-public class MainScreen extends JFrame {
+public class MainScreen extends JFrame {   //La JFrame principale où on choisit la difficulté
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class MainScreen extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {  //Le traitement Swing complet est effectué dans un thread appelé EDT (Event Dispatching Thread)
 			public void run() {
 				try {
 					frame = new MainScreen();
@@ -51,7 +51,7 @@ public class MainScreen extends JFrame {
 	 */
 	public MainScreen() throws IOException {
 		try {
-			  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());  //Chercher le Ui class du systeme d'exploitation pour avoir une interface moderne
 			} catch(Exception e) {
 			  System.out.println("IU personnalisée introuvable dans le système d'exploitation: " + e);
 			}
@@ -79,8 +79,13 @@ public class MainScreen extends JFrame {
 		JButton btnNewButton = new JButton(" EASY  (\u3063 \u00B0\u0414 \u00B0;)\u3063");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new FallingSnakes("easy");
-				frame.dispose();
+				try {
+					new FallingSnakes("easy");   //On pass la difficulté comme argument
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				frame.dispose();  // On a plus besoin de cette JFrame 
 				frame = null;
 			}
 		});
@@ -97,7 +102,14 @@ public class MainScreen extends JFrame {
 		JButton btnNewButton_1 = new JButton(" NORMAL  ^____^");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new FallingSnakes("normal");
+				try {
+					new FallingSnakes("normal");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				frame.dispose();   
+				frame = null;
 			}
 		});
 		btnNewButton_1.setBounds(431, 531, 190, 29);
@@ -106,7 +118,14 @@ public class MainScreen extends JFrame {
 		JButton btnNewButton_2 = new JButton("HARD   (\u2310\u25A0_\u25A0)");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new FallingSnakes("hard");
+				try {
+					new FallingSnakes("hard");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				frame.dispose();   
+				frame = null;
 			}
 		});
 		btnNewButton_2.setBounds(723, 531, 190, 29);
