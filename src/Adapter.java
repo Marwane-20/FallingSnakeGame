@@ -16,7 +16,7 @@ public class Adapter extends KeyAdapter {     			//Listener class pour capturer 
 					int pos = canon.getPosX();
 		            switch(e.getKeyCode()) {			// Ecoute 3 evenement possible LEFT,RIGHT,SPACE
 		                case KeyEvent.VK_RIGHT:
-		                	if(pos >= screenWidth - unitSize)
+		                	if(pos >= screenWidth - unitSize) //
 		                		return;
 		                    canon.setPosX(unitSize + pos);
 		                    break;
